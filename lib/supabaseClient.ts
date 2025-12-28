@@ -26,12 +26,10 @@ export const supabase = new Proxy(
   {
     get(_, prop) {
       if (!_supabase) throw missingEnvError();
-      // @ts-expect-error - forward to real client
       return (_supabase as any)[prop];
     },
     apply(_, __, args) {
       if (!_supabase) throw missingEnvError();
-      // @ts-expect-error
       return (_supabase as any).apply(null, args);
     },
   }
