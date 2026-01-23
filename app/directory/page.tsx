@@ -37,9 +37,9 @@ const allResources: Resource[] = [
     name: "Community Food Bank",
     category: "Support Services",
     description: "Providing emergency food assistance to families in need. No questions asked, just support when you need it most.",
-    phone: "(555) 123-4567",
-    email: "help@communityfoodbank.org",
-    website: "#",
+    phone: "1-800-771-2303",
+    email: "info@feedingamerica.org",
+    website: "https://www.feedingamerica.org",
     address: "123 Main Street, Community City, ST 12345",
     hours: "Mon-Fri: 9am-5pm, Sat: 10am-2pm",
     iconName: "ShoppingBag",
@@ -50,9 +50,9 @@ const allResources: Resource[] = [
     name: "Senior Care Network",
     category: "Support Services",
     description: "Comprehensive support services for seniors including transportation, meal delivery, and companionship programs.",
-    phone: "(555) 234-5678",
-    email: "contact@seniorcarenetwork.org",
-    website: "#",
+    phone: "1-703-548-5558",
+    email: "info@mealsonwheelsamerica.org",
+    website: "https://www.mealsonwheelsamerica.org",
     address: "456 Oak Avenue, Community City, ST 12345",
     hours: "Mon-Fri: 8am-6pm",
     iconName: "HeartHandshake",
@@ -63,9 +63,9 @@ const allResources: Resource[] = [
     name: "Youth Development Center",
     category: "Programs",
     description: "After-school programs, tutoring, sports leagues, and summer camps for children and teenagers in our community.",
-    phone: "(555) 345-6789",
-    email: "programs@youthcenter.org",
-    website: "#",
+    phone: "1-800-342-2255",
+    email: "info@bgca.org",
+    website: "https://www.bgca.org",
     address: "789 Pine Street, Community City, ST 12345",
     hours: "Mon-Fri: 3pm-8pm, Sat: 9am-5pm",
     iconName: "GraduationCap",
@@ -76,9 +76,10 @@ const allResources: Resource[] = [
     name: "Community Health Clinic",
     category: "Healthcare",
     description: "Affordable healthcare services including primary care, dental, and mental health support for all community members.",
-    phone: "(555) 456-7890",
-    email: "appointments@communityclinic.org",
+    phone: "202-296-6540",
+    email: "info@nachc.org",
     address: "321 Elm Street, Community City, ST 12345",
+    website: "https://www.nachc.org",
     hours: "Mon-Fri: 7am-7pm, Sat: 8am-4pm",
     iconName: "Activity",
   },
@@ -87,9 +88,9 @@ const allResources: Resource[] = [
     name: "Job Training Institute",
     category: "Employment",
     description: "Free job training programs, resume workshops, and career counseling to help community members find meaningful employment.",
-    phone: "(555) 567-8901",
-    email: "training@jobinstitute.org",
-    website: "#",
+    phone: "1-877-348-0502",
+    email: "info@careeronestop.org",
+    website: "https://www.careeronestop.org",
     address: "654 Maple Drive, Community City, ST 12345",
     hours: "Mon-Thu: 9am-6pm, Fri: 9am-5pm",
     iconName: "TrendingUp",
@@ -99,9 +100,10 @@ const allResources: Resource[] = [
     name: "Housing Assistance Program",
     category: "Housing",
     description: "Emergency housing assistance, rental support, and housing navigation services for individuals and families.",
-    phone: "(555) 678-9012",
-    email: "housing@communityassist.org",
+    phone: "1-202-708-1112",
+    email: "answers@hud.gov",
     address: "987 Cedar Lane, Community City, ST 12345",
+    website: "https://www.hud.gov",
     hours: "Mon-Fri: 8am-5pm",
     iconName: "Building2",
   },
@@ -216,7 +218,7 @@ export default function DirectoryPage() {
               BUILT BY THE COMMUNITY, FOR THE COMMUNITY
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 galak-pro">
-              Explore our comprehensive directory of community resources and services
+              Browse Community Resources
             </h2>
           </div>
 
@@ -296,7 +298,7 @@ export default function DirectoryPage() {
                       <span>{resource.email}</span>
                     </div>
                     {resource.website && (
-                      <a href={resource.website} className="flex items-center gap-2 text-blue-600 hover:underline">
+                      <a href={resource.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:underline">
                         <Globe className="w-4 h-4" />
                         <span>Visit Website</span>
                       </a>

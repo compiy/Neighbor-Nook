@@ -53,59 +53,52 @@
   font-display: swap;
 }
 
-/* Vilane font family - explicit weight files from project `font/` folder */
+/* Vilane font family - served from /public/fonts with explicit weights */
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Thin.woff2') format('woff2'),
-       url('/fonts/Vilane Thin.woff2') format('woff2');
+  src: url('/fonts/Vilane Thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Extra Light.woff2') format('woff2'),
-       url('/fonts/Vilane Extra Light.woff2') format('woff2');
+  src: url('/fonts/Vilane Extra Light.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Light.woff2') format('woff2'),
-       url('/fonts/Vilane Light.woff2') format('woff2');
+  src: url('/fonts/Vilane Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Regular.woff2') format('woff2'),
-       url('/fonts/Vilane Regular.woff2') format('woff2');
+  src: url('/fonts/Vilane Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Medium.woff2') format('woff2'),
-       url('/fonts/Vilane Medium.woff2') format('woff2');
+  src: url('/fonts/Vilane Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Semi Bold.woff2') format('woff2'),
-       url('/fonts/Vilane Semi Bold.woff2') format('woff2');
+  src: url('/fonts/Vilane Semi Bold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Vilane';
-  src: url('/font/Vilane Bold.woff2') format('woff2'),
-       url('/fonts/Vilane Bold.woff2') format('woff2');
+  src: url('/fonts/Vilane Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

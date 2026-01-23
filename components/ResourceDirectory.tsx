@@ -2,6 +2,8 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Search, Filter, MapPin, Phone, Globe, Building2, ThumbsDown } from "lucide-react";
+import { Bookmark } from "lucide-react";
+import FavoritesPanel from "./FavoritesPanel";
 
 export interface Resource {
   id: string;
@@ -32,10 +34,65 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [localResources, setLocalResources] = useState<Resource[]>(resources);
+  const [favorites, setFavorites] = useState<Record<string, string[]>>({});
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
 
   useEffect(() => {
     setLocalResources(resources);
   }, [resources]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('nn_favorites');
+      if (raw) setFavorites(JSON.parse(raw));
+    } catch (e) {
+      console.error('Failed to parse favorites', e);
+    }
+  }, []);
+
+  useEffect(() => {
+    try { localStorage.setItem('nn_favorites', JSON.stringify(favorites)); } catch(e) { }
+  }, [favorites]);
+
+  const toggleFavorite = (resourceId: string, listName = 'Saved') => {
+    setFavorites(prev => {
+      const next = { ...prev };
+      next[listName] = next[listName] || [];
+      const idx = next[listName].indexOf(resourceId);
+      if (idx >= 0) next[listName].splice(idx, 1);
+      else next[listName].unshift(resourceId);
+      // remove empty lists
+      if (next[listName].length === 0) delete next[listName];
+      return next;
+    });
+  };
+
+  const removeFavorite = (listName: string, id: string) => {
+    setFavorites(prev => {
+      const next = { ...prev };
+      if (!next[listName]) return prev;
+      next[listName] = next[listName].filter(x => x !== id);
+      if (next[listName].length === 0) delete next[listName];
+      return next;
+    });
+  };
+
+  const createList = (name: string) => {
+    setFavorites(prev => ({ ...(prev || {}), [name]: [] }));
+  };
+
+  const moveFavorite = (from: string, to: string, id: string) => {
+    setFavorites(prev => {
+      const next = { ...(prev || {}) };
+      if (!next[from]) return prev;
+      next[from] = next[from].filter(x => x !== id);
+      next[to] = next[to] || [];
+      next[to].unshift(id);
+      if (next[from].length === 0) delete next[from];
+      return next;
+    });
+  };
 
   const filteredResources = useMemo(() => {
     return localResources.filter((resource) => {
@@ -43,6 +100,9 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
         resource.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         resource.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         resource.location.toLowerCase().includes(searchQuery.toLowerCase());
+      // favorites filter
+      const isFavorited = Object.values(favorites || {}).some(arr => arr.includes(resource.id));
+      if (showFavoritesOnly && !isFavorited) return false;
 
       const matchesCategory =
         selectedCategory === "All" ||
@@ -50,7 +110,7 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
 
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, selectedCategory, resources]);
+  }, [searchQuery, selectedCategory, resources, favorites, showFavoritesOnly]);
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
@@ -70,6 +130,12 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
 
         {/* Search and Filter Bar */}
         <div className="mb-10 space-y-6">
+          <div className="flex justify-end">
+            <button onClick={() => setPanelOpen(true)} className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200">
+              <Bookmark className="w-4 h-4" />
+              My Favorites
+            </button>
+          </div>
           <div className="relative max-w-2xl mx-auto">
             <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-zinc-400 w-5 h-5" />
             <input
@@ -83,6 +149,15 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
 
           <div className="flex flex-wrap gap-3 justify-center">
             <Filter className="w-5 h-5 text-zinc-600 mt-1.5" />
+            <button
+              onClick={() => setShowFavoritesOnly(s => !s)}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                showFavoritesOnly ? 'bg-black text-white shadow-lg scale-105' : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200 hover:shadow-md'
+              }`}
+            >
+              <Bookmark className="w-4 h-4" />
+              Favorites
+            </button>
             {categories.map((category) => (
               <button
                 key={category}
@@ -119,6 +194,16 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
                 <span className="text-xs font-semibold px-3 py-1 bg-zinc-100 rounded-full text-zinc-700">
                   {resource.category}
                 </span>
+              </div>
+              <div className="flex items-center justify-end mb-3">
+                {(() => {
+                  const fav = Object.values(favorites || {}).some(arr => arr.includes(resource.id));
+                  return (
+                    <button onClick={() => toggleFavorite(resource.id)} aria-pressed={fav} className={`inline-flex items-center gap-2 p-2 rounded-full ${fav ? 'bg-amber-100 text-amber-600' : 'bg-zinc-50 hover:bg-zinc-100'}`}>
+                      <Bookmark className="w-5 h-5" />
+                    </button>
+                  );
+                })()}
               </div>
               <h3 className="text-xl font-bold text-black mb-3 group-hover:text-purple-600 transition-colors">
                 {resource.name}
@@ -179,6 +264,7 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
                     </button>
                   </div>
                 )}
+              {/* removed duplicate Save button; bookmark at card header now used */}
               </div>
             </div>
           ))}
@@ -191,6 +277,15 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
             </p>
           </div>
         )}
+        <FavoritesPanel
+          open={panelOpen}
+          onClose={() => setPanelOpen(false)}
+          lists={favorites}
+          resources={resources}
+          onRemove={removeFavorite}
+          onCreateList={createList}
+          onMove={moveFavorite}
+        />
       </div>
     </section>
   );
