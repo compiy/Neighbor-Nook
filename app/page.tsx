@@ -26,30 +26,16 @@ export default function Home() {
             className="w-8 h-8"
             unoptimized
           />
-          <span
-            className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black"
-            style={{ fontFamily: "'Galak Pro', sans-serif" }}
-          >
-            neighbornook
-          </span>
+          <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
         </Link>
         <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link
-            href="/directory"
-            className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro"
-          >
+          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Directory
           </Link>
-          <Link
-            href="/featured"
-            className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro"
-          >
+          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Featured
           </Link>
-          <Link
-            href="/about"
-            className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro"
-          >
+          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             About
           </Link>
         </nav>
@@ -59,8 +45,8 @@ export default function Home() {
       <section className="flex items-center justify-center min-h-[calc(100vh-160px)] px-4 relative overflow-hidden">
         <AnimatedBlobs />
         <div className="relative z-10 text-center max-w-4xl">
-          <h1 className="text-black leading-tight mb-6 galak-pro">
-            <div className="text-3xl md:text-4xl mb-2 galak-pro">Turn your</div>
+          <h1 className="text-black leading-tight mb-6">
+            <div className="text-3xl md:text-4xl mb-2">Turn your</div>
             <div className="flex items-center justify-center gap-6 md:gap-8 mb-2">
               <Image
                 src="/icons/person.svg"
@@ -69,10 +55,10 @@ export default function Home() {
                 height={52}
                 className="w-8 h-12 md:w-10 md:h-16"
               />
-              <span className="text-5xl md:text-6xl font-bold galak-pro">Community</span>
+              <span className="text-5xl md:text-6xl font-bold">Community</span>
             </div>
             <div>
-              <span className="text-3xl md:text-4xl bg-pink-200 px-3 py-1 inline-block rounded-sm galak-pro">
+              <span className="text-3xl md:text-4xl bg-pink-200 px-3 py-1 inline-block rounded-sm">
                 into connection
               </span>
             </div>

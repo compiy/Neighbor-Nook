@@ -1,57 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@font-face {
-  font-family: 'Galak Pro';
-  src: url('/fonts/GalakPro-Regular.woff2') format('woff2'),
-    url('/font/GalakPro-Regular.woff2') format('woff2'),
-    url('/fonts/GalakPro-Regular.woff') format('woff'),
-    url('/font/GalakPro-Regular.woff') format('woff'),
-    url('/fonts/GalakPro-Regular.ttf') format('truetype'),
-    url('/font/GalakPro-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Galak Pro';
-  src: url('/fonts/GalakPro-Medium.woff2') format('woff2'),
-    url('/font/GalakPro-Medium.woff2') format('woff2'),
-    url('/fonts/GalakPro-Medium.woff') format('woff'),
-    url('/font/GalakPro-Medium.woff') format('woff'),
-    url('/fonts/GalakPro-Medium.ttf') format('truetype'),
-    url('/font/GalakPro-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Galak Pro';
-  src: url('/fonts/GalakPro-SemiBold.woff2') format('woff2'),
-    url('/font/GalakPro-SemiBold.woff2') format('woff2'),
-    url('/fonts/GalakPro-SemiBold.woff') format('woff'),
-    url('/font/GalakPro-SemiBold.woff') format('woff'),
-    url('/fonts/GalakPro-SemiBold.ttf') format('truetype'),
-    url('/font/GalakPro-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Galak Pro';
-  src: url('/fonts/GalakPro-Bold.woff2') format('woff2'),
-    url('/font/GalakPro-Bold.woff2') format('woff2'),
-    url('/fonts/GalakPro-Bold.woff') format('woff'),
-    url('/font/GalakPro-Bold.woff') format('woff'),
-    url('/fonts/GalakPro-Bold.ttf') format('truetype'),
-    url('/font/GalakPro-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Removed Galak Pro: project now uses Vilane everywhere */
 
 /* Vilane font family - served from /public/fonts with explicit weights */
 @font-face {
@@ -279,10 +229,7 @@
     @apply bg-background text-foreground;
   }
 
-  /* utility to force Galak Pro on specific elements */
-  .galak-pro {
-    font-family: 'Galak Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
+  /* Galak Pro removed — use Vilane via the global font stack */
 }
 
 /* Animated blurred blobs used behind hero text */

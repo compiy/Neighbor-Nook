@@ -194,16 +194,16 @@ export default function DirectoryPage() {
             className="w-8 h-8"
             unoptimized
           />
-          <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black" style={{ fontFamily: "'Galak Pro', sans-serif" }}>neighbornook</span>
+          <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
         </Link>
         <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Directory
           </Link>
-          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Featured
           </Link>
-          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             About
           </Link>
         </nav>
@@ -214,10 +214,10 @@ export default function DirectoryPage() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-wider text-zinc-500 mb-4 galak-pro">
+            <p className="text-sm uppercase tracking-wider text-zinc-500 mb-4">
               BUILT BY THE COMMUNITY, FOR THE COMMUNITY
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 galak-pro">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Browse Community Resources
             </h2>
           </div>
@@ -261,7 +261,7 @@ export default function DirectoryPage() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-100 text-black rounded-lg font-medium hover:bg-blue-200 transition-colors"
               >
                 <Plus className="w-5 h-5" />
-                <span className="galak-pro">Add New Resource</span>
+                <span>Add New Resource</span>
               </Link>
             </div>
 

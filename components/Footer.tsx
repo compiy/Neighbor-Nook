@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <Image src="/icons/logo.svg" alt="Neighbor Nook logo" width={28} height={28} className="w-7 h-7" unoptimized />
             <div>
-              <div className="text-sm text-zinc-700 galak-pro">© 2025 Neighbor Nook, Inc.</div>
+              <div className="text-sm text-zinc-700">© 2025 Neighbor Nook, Inc.</div>
               <div className="text-xs text-zinc-500">Built for the community</div>
             </div>
           </div>

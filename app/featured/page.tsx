@@ -19,13 +19,13 @@ export default function FeaturedPage() {
           <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black" style={{ fontFamily: "'Galak Pro', sans-serif" }}>neighbornook</span>
         </Link>
         <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Directory
           </Link>
-          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             Featured
           </Link>
-          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity galak-pro">
+          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
             About
           </Link>
         </nav>
@@ -38,11 +38,11 @@ export default function FeaturedPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 mb-4">
               <Star className="w-6 h-6 text-red-400" />
-              <p className="text-sm uppercase tracking-wider text-zinc-500 galak-pro">
+              <p className="text-sm uppercase tracking-wider text-zinc-500">
                 HIGHLIGHTED RESOURCES
               </p>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 galak-pro">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Featured Community Resources
             </h2>
             <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
