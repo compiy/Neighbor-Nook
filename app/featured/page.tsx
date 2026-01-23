@@ -74,7 +74,7 @@ export default function FeaturedPage() {
                   <Mail className="w-4 h-4" />
                   <span>help@communityfoodbank.org</span>
                 </div>
-                <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
+                <a href="https://www.feedingamerica.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
                   <Globe className="w-4 h-4" />
                   <span>Visit Website</span>
                 </a>
@@ -111,7 +111,7 @@ export default function FeaturedPage() {
                   <Mail className="w-4 h-4" />
                   <span>contact@seniorcarenetwork.org</span>
                 </div>
-                <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
+                <a href="https://www.mealsonwheelsamerica.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
                   <Globe className="w-4 h-4" />
                   <span>Visit Website</span>
                 </a>
@@ -148,7 +148,7 @@ export default function FeaturedPage() {
                   <Mail className="w-4 h-4" />
                   <span>programs@youthcenter.org</span>
                 </div>
-                <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
+                <a href="https://www.bgca.org" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-600 hover:underline font-medium">
                   <Globe className="w-4 h-4" />
                   <span>Visit Website</span>
                 </a>
