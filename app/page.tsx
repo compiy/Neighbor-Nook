@@ -15,31 +15,7 @@ import AnimatedBlobs from "@/components/AnimatedBlobs";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="relative flex items-center justify-between px-6 py-4 md:px-8 md:py-6">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/icons/logo.svg"
-            alt="NeighborNook logo"
-            width={32}
-            height={32}
-            className="w-8 h-8"
-            unoptimized
-          />
-          <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
-        </Link>
-        <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            Directory
-          </Link>
-          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            Featured
-          </Link>
-          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            About
-          </Link>
-        </nav>
-      </header>
+      {/* Header moved to shared component */}
 
       {/* Hero Section */}
       <section className="flex items-center justify-center min-h-[calc(100vh-160px)] px-4 relative overflow-hidden">
@@ -183,6 +159,24 @@ export default function Home() {
                 Support Services, Community Events, and Programs. Find what you
                 need faster.
               </p>
+            </div>
+
+            {/* Resource Matchmaker */}
+            <div className="bg-white rounded-xl p-6 border border-zinc-200">
+              <div className="mb-4">
+                <Search className="w-8 h-8 text-cyan-500" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Resource Matchmaker</h3>
+              <p className="text-zinc-600 leading-relaxed mb-4">
+                Short quiz recommends the best programs and services for your
+                needs — quick, personalized suggestions to connect you with
+                the right local support.
+              </p>
+              <div>
+                <a href="/matchmaker" className="inline-block px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-zinc-800 transition-colors">
+                  Take the quiz
+                </a>
+              </div>
             </div>
           </div>
         </div>

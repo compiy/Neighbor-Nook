@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { supabase } from "../../lib/supabaseClient";
-import { ShoppingBag, HeartHandshake, GraduationCap, Activity, TrendingUp, Building2, Phone, Mail, Globe, MapPin, Clock, Search, Filter, Plus, ThumbsDown } from "lucide-react";
+import { ShoppingBag, HeartHandshake, GraduationCap, Activity, TrendingUp, Building2, Phone, Mail, Globe, MapPin, Clock, Search, Filter, Plus, ThumbsDown, Star } from "lucide-react";
 
 interface Resource {
   id: string;
@@ -31,83 +31,7 @@ const iconMap: Record<string, typeof ShoppingBag> = {
   Building2,
 };
 
-const allResources: Resource[] = [
-  {
-    id: "1",
-    name: "Community Food Bank",
-    category: "Support Services",
-    description: "Providing emergency food assistance to families in need. No questions asked, just support when you need it most.",
-    phone: "1-800-771-2303",
-    email: "info@feedingamerica.org",
-    website: "https://www.feedingamerica.org",
-    address: "123 Main Street, Community City, ST 12345",
-    hours: "Mon-Fri: 9am-5pm, Sat: 10am-2pm",
-    iconName: "ShoppingBag",
-    featured: true,
-  },
-  {
-    id: "2",
-    name: "Senior Care Network",
-    category: "Support Services",
-    description: "Comprehensive support services for seniors including transportation, meal delivery, and companionship programs.",
-    phone: "1-703-548-5558",
-    email: "info@mealsonwheelsamerica.org",
-    website: "https://www.mealsonwheelsamerica.org",
-    address: "456 Oak Avenue, Community City, ST 12345",
-    hours: "Mon-Fri: 8am-6pm",
-    iconName: "HeartHandshake",
-    featured: true,
-  },
-  {
-    id: "3",
-    name: "Youth Development Center",
-    category: "Programs",
-    description: "After-school programs, tutoring, sports leagues, and summer camps for children and teenagers in our community.",
-    phone: "1-800-342-2255",
-    email: "info@bgca.org",
-    website: "https://www.bgca.org",
-    address: "789 Pine Street, Community City, ST 12345",
-    hours: "Mon-Fri: 3pm-8pm, Sat: 9am-5pm",
-    iconName: "GraduationCap",
-    featured: true,
-  },
-  {
-    id: "4",
-    name: "Community Health Clinic",
-    category: "Healthcare",
-    description: "Affordable healthcare services including primary care, dental, and mental health support for all community members.",
-    phone: "202-296-6540",
-    email: "info@nachc.org",
-    address: "321 Elm Street, Community City, ST 12345",
-    website: "https://www.nachc.org",
-    hours: "Mon-Fri: 7am-7pm, Sat: 8am-4pm",
-    iconName: "Activity",
-  },
-  {
-    id: "5",
-    name: "Job Training Institute",
-    category: "Employment",
-    description: "Free job training programs, resume workshops, and career counseling to help community members find meaningful employment.",
-    phone: "1-877-348-0502",
-    email: "info@careeronestop.org",
-    website: "https://www.careeronestop.org",
-    address: "654 Maple Drive, Community City, ST 12345",
-    hours: "Mon-Thu: 9am-6pm, Fri: 9am-5pm",
-    iconName: "TrendingUp",
-  },
-  {
-    id: "6",
-    name: "Housing Assistance Program",
-    category: "Housing",
-    description: "Emergency housing assistance, rental support, and housing navigation services for individuals and families.",
-    phone: "1-202-708-1112",
-    email: "answers@hud.gov",
-    address: "987 Cedar Lane, Community City, ST 12345",
-    website: "https://www.hud.gov",
-    hours: "Mon-Fri: 8am-5pm",
-    iconName: "Building2",
-  },
-];
+import allResources from "@/lib/resourcesData";
 
 const categories = ["All", "Support Services", "Programs", "Healthcare", "Employment", "Housing"];
 
@@ -115,6 +39,8 @@ export default function DirectoryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [resources, setResources] = useState<Resource[]>(allResources);
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const isInitialMount = useRef(true);
 
   // Load submitted resources from localStorage on mount and when storage changes
   useEffect(() => {
@@ -167,6 +93,62 @@ export default function DirectoryPage() {
     };
   }, []);
 
+  // Load favorites from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('nn_favorites');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Get favorites from the "Saved" list specifically
+        const savedFavorites = parsed.Saved || [];
+        setFavorites(savedFavorites);
+      }
+      // Mark initial mount as complete after loading
+      isInitialMount.current = false;
+    } catch (e) {
+      console.error('Failed to load favorites:', e);
+      isInitialMount.current = false;
+    }
+  }, []);
+
+  // Save favorites to localStorage only when they actually change (not on initial mount)
+  useEffect(() => {
+    // Skip saving on initial mount to avoid overwriting existing data
+    if (isInitialMount.current) return;
+    
+    try {
+      // Get existing favorites structure
+      const existing = localStorage.getItem('nn_favorites');
+      const existingFavs = existing ? JSON.parse(existing) : {};
+      
+      // Create updated structure preserving all existing lists
+      const updatedFavs = { ...existingFavs };
+      
+      // Update the "Saved" list with current favorites
+      updatedFavs.Saved = favorites;
+      
+      // Remove empty lists
+      Object.keys(updatedFavs).forEach(key => {
+        if (updatedFavs[key].length === 0) delete updatedFavs[key];
+      });
+      
+      localStorage.setItem('nn_favorites', JSON.stringify(updatedFavs));
+    } catch (e) {
+      console.error('Failed to save favorites:', e);
+    }
+  }, [favorites]);
+
+  const toggleFavorite = (resourceId: string) => {
+    setFavorites(prev => {
+      const exists = prev.includes(resourceId);
+      if (exists) {
+        return prev.filter(id => id !== resourceId);
+      } else {
+        return [...prev, resourceId];
+      }
+    });
+  };
+
   const filteredResources = useMemo(() => {
     return resources.filter((resource) => {
       const matchesSearch =
@@ -183,31 +165,7 @@ export default function DirectoryPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="relative flex items-center justify-between px-6 py-4 md:px-8 md:py-6">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/icons/logo.svg"
-            alt="NeighborNook logo"
-            width={32}
-            height={32}
-            className="w-8 h-8"
-            unoptimized
-          />
-          <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
-        </Link>
-        <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
-          <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            Directory
-          </Link>
-          <Link href="/featured" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            Featured
-          </Link>
-          <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
-            About
-          </Link>
-        </nav>
-      </header>
+      {/* Header moved to shared component */}
 
       {/* Resource Directory Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-50">
@@ -285,6 +243,19 @@ export default function DirectoryPage() {
                       )}
                       <span className="px-2 py-1 bg-zinc-100 text-zinc-700 text-xs font-medium rounded">{resource.category}</span>
                     </div>
+                  </div>
+                  <div className="flex items-center justify-end mb-3">
+                    <button
+                      onClick={() => toggleFavorite(resource.id)}
+                      className={`inline-flex items-center gap-2 p-2 rounded-full transition-colors ${
+                        favorites.includes(resource.id)
+                          ? 'bg-amber-100 text-amber-600'
+                          : 'bg-zinc-50 hover:bg-zinc-100 text-zinc-400'
+                      }`}
+                      aria-pressed={favorites.includes(resource.id)}
+                    >
+                      <Star className="w-5 h-5" fill={favorites.includes(resource.id) ? 'currentColor' : 'none'} />
+                    </button>
                   </div>
                   <h3 className="text-xl font-bold text-zinc-800 mb-3">{resource.name}</h3>
                   <p className="text-zinc-600 mb-4 leading-relaxed">{resource.description}</p>
