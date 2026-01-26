@@ -34,6 +34,9 @@ export default function Header() {
         <Link href="/about" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
           About
         </Link>
+        <Link href="/references" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
+          References
+        </Link>
       </nav>
     </header>
   );
