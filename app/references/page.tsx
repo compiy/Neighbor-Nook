@@ -33,6 +33,17 @@ export default function ReferencesPage() {
       }, index * 500); // Small delay between downloads
     });
   };
+
+  const downloadWorksCited = () => {
+    // Download the Works Cited PDF
+    const link = document.createElement('a');
+    link.href = '/Works%20Cited.pdf';
+    link.download = 'Works Cited.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <main className="min-h-screen bg-white">
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-50">
@@ -188,6 +199,13 @@ export default function ReferencesPage() {
                 >
                   <Download className="w-4 h-4" />
                   Download Work Logs (Both)
+                </button>
+                <button
+                  onClick={downloadWorksCited}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-zinc-100 text-black rounded-lg hover:bg-zinc-200 transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Works Cited
                 </button>
               </div>
             </div>

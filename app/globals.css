@@ -337,3 +337,10 @@
   100% { filter: blur(100px) hue-rotate(-25deg); }
 }
 
+/* Hide logo text at exactly 1200px width */
+@media (max-width: 1199px) {
+  .logo-text {
+    display: none !important;
+  }
+}
+

@@ -16,7 +16,7 @@ export default function Header() {
           className="w-8 h-8"
           unoptimized
         />
-        <span className="hidden md:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
+        <span className="logo-text hidden xl:inline-block text-2xl md:text-3xl font-semibold text-black">neighbornook</span>
       </Link>
       <nav className="flex items-center gap-6 md:gap-8 absolute left-1/2 transform -translate-x-1/2">
         <Link href="/directory" className="text-base md:text-lg text-black font-medium hover:opacity-70 transition-opacity">
