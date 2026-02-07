@@ -44,7 +44,7 @@ export default function FeaturedPage() {
               <div className="space-y-3 text-sm text-zinc-600">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>(555) 123-4567</span>
+                  <span>1-800-771-2303</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
@@ -81,7 +81,7 @@ export default function FeaturedPage() {
               <div className="space-y-3 text-sm text-zinc-600">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>(555) 234-5678</span>
+                  <span>1-703-548-5558</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
@@ -118,7 +118,7 @@ export default function FeaturedPage() {
               <div className="space-y-3 text-sm text-zinc-600">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <span>(555) 345-6789</span>
+                  <span>1-800-342-2255</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
