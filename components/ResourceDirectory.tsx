@@ -114,7 +114,7 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden">
-      {/* Subtle gradient background */}
+      {}
       <div className="absolute inset-0 bg-gradient-to-b from-purple-50/30 via-transparent to-cyan-50/30 pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
@@ -128,7 +128,7 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
           </p>
         </div>
 
-        {/* Search and Filter Bar */}
+        {}
         <div className="mb-10 space-y-6">
           <div className="flex justify-end">
             <button onClick={() => setPanelOpen(true)} className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200">
@@ -174,13 +174,13 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
           </div>
         </div>
 
-        {/* Results Count */}
+        {}
         <div className="mb-8 text-zinc-600 font-medium">
           {filteredResources.length} resource
           {filteredResources.length !== 1 ? "s" : ""} found
         </div>
 
-        {/* Resource Grid */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredResources.map((resource) => (
             <div
@@ -264,7 +264,7 @@ export default function ResourceDirectory({ resources }: ResourceDirectoryProps)
                     </button>
                   </div>
                 )}
-              {/* removed duplicate Save button; bookmark at card header now used */}
+              {}
               </div>
             </div>
           ))}

@@ -5,12 +5,12 @@ import { Compass, Sparkles, Shield, Users2, Eye, Handshake, Zap } from "lucide-r
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Header moved to shared component */}
+      {}
 
-      {/* About Section */}
+      {}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
+          {}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
               About NeighborNook
@@ -20,21 +20,18 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Mission Section */}
+          {}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <Compass className="w-8 h-8 text-indigo-600" />
               <h2 className="text-3xl font-bold text-black">Our Mission</h2>
             </div>
             <p className="text-lg text-zinc-600 leading-relaxed mb-4">
-              NeighborNook was created to bridge the gap between community members and the valuable resources available in their neighborhoods. We believe that everyone deserves access to support services, programs, and opportunities that can help them and their families thrive.
-            </p>
-            <p className="text-lg text-zinc-600 leading-relaxed">
-              Our platform serves as a comprehensive hub where residents can discover local nonprofits, support services, community events, and programs that strengthen our community bonds and improve quality of life.
+              Our platform is a diverse network whereby residents from their respective areas can find and discover nonprofits, support services, and programs that help strengthen the community.
             </p>
           </div>
 
-          {/* What We Do Section */}
+          {}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <Sparkles className="w-8 h-8 text-emerald-600" />
@@ -44,25 +41,25 @@ export default function AboutPage() {
               <div className="bg-zinc-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-black mb-2">Resource Directory</h3>
                 <p className="text-zinc-600 leading-relaxed">
-                  We maintain an up-to-date directory of community resources, making it easy for residents to find exactly what they need—whether it's food assistance, healthcare, housing support, or educational programs.
+                  We have a very thorough community resource list, which we continue to update. It makes it extremely easy for individuals of the community to access what they need. The individuals can easily find food, health care, housing, and educational resources, whichever is needed.
                 </p>
               </div>
               <div className="bg-zinc-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-black mb-2">Featured Highlights</h3>
                 <p className="text-zinc-600 leading-relaxed">
-                  We spotlight organizations and programs that are making a significant impact in our community, helping residents discover the most valuable resources available.
+                  We highlight organizations or programs that are making a difference in our community. This way, it's simple to see what matters the most to you.
                 </p>
               </div>
               <div className="bg-zinc-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-black mb-2">Community-Driven</h3>
                 <p className="text-zinc-600 leading-relaxed">
-                  NeighborNook is built by the community, for the community. Residents can submit new resources, ensuring our directory grows and stays current with the needs of our neighborhood.
+                  NeighborNook is built by the community, for the community. Residents are able to add new resources to our list, ensuring it continues to evolve with the needs of our community.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Values Section */}
+          {}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-8 h-8 text-amber-500" />
@@ -75,7 +72,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold text-black">Accessibility</h3>
                 </div>
                 <p className="text-zinc-600 leading-relaxed">
-                  We believe information about community resources should be easily accessible to everyone, regardless of background or circumstances.
+                  We believe that information about community resources should be universally accessible and available to all people regardless of background and/or circumstances.
                 </p>
               </div>
               <div>
@@ -84,7 +81,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold text-black">Community First</h3>
                 </div>
                 <p className="text-zinc-600 leading-relaxed">
-                  Our platform is designed with the community's needs at the center, ensuring we serve residents effectively and compassionately.
+                  Our site is designed around the community's needs, and this is the reason we are able to serve the community well and with compassion.
                 </p>
               </div>
               <div>
@@ -93,7 +90,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold text-black">Transparency</h3>
                 </div>
                 <p className="text-zinc-600 leading-relaxed">
-                  We provide clear, accurate information about resources so community members can make informed decisions about the services they use.
+                  We provide accurate and timely information so that members of society can make informed decisions based on resources they are using.
                 </p>
               </div>
               <div>
@@ -102,18 +99,18 @@ export default function AboutPage() {
                   <h3 className="text-xl font-semibold text-black">Collaboration</h3>
                 </div>
                 <p className="text-zinc-600 leading-relaxed">
-                  We work together with local organizations and residents to build a stronger, more connected community.
+                  We remain committed to a stronger and better community through our partnerships with organizations in our community and its members.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Call to Action */}
+          {}
           <div className="bg-zinc-50 rounded-xl p-8 text-center">
             <Users2 className="w-12 h-12 text-black mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-black mb-4">Join Us in Building a Stronger Community</h2>
             <p className="text-zinc-600 mb-6 leading-relaxed">
-              Whether you're looking for resources or want to help others find them, NeighborNook is here to support you. Explore our directory, submit a resource, or reach out to learn more about how we can work together.
+              Regardless of whether you are a person who needs a resource or a person who wants to help others find resources, NeighborNook is here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

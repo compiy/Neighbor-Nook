@@ -15,7 +15,6 @@ export default function CommunityMap() {
 
   useEffect(() => {
     setMounted(true);
-    // use a stable container id so leftover DOM can be found and removed
     setMapKey(containerId);
     try {
       const prev = document.getElementById(containerId);
@@ -25,7 +24,6 @@ export default function CommunityMap() {
     const t = setTimeout(() => setShowMap(true), 50);
 
     const onResourceAdded = () => {
-      // quick remount to refresh markers
       setShowMap(false);
       setTimeout(() => setShowMap(true), 100);
     };
@@ -63,8 +61,6 @@ export default function CommunityMap() {
 
   const [fetchedResources, setFetchedResources] = useState<Array<any>>([]);
 
-  // geocoding cache (localStorage)
-  // bump cache key to force fresh geocoding after address updates
   const geocodeCacheKey = "geocodeCache:v2";
 
   const loadGeocodeCache = () => {
@@ -107,7 +103,6 @@ export default function CommunityMap() {
   useEffect(() => {
     if (!showMap) return;
 
-    // ensure no leftover container
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -123,11 +118,9 @@ export default function CommunityMap() {
 
       const layers: L.Layer[] = [];
 
-      // prepare icon styles
       const builtinIcon = L.divIcon({ className: "builtin-marker", html: '<div class="w-5 h-5 rounded-full bg-green-600 border-2 border-white"></div>', iconSize: [20, 20] });
       const submittedIcon = L.divIcon({ className: "submitted-marker", html: '<div class="w-5 h-5 rounded-full bg-blue-600 border-2 border-white"></div>', iconSize: [20, 20] });
 
-      // build combined resources list
       const apiResp = await fetch('/api/resources');
       let apiData: any[] = [];
       try {
@@ -148,7 +141,6 @@ export default function CommunityMap() {
 
       const combined = [...resourcesFromBuiltIn, ...submitted];
 
-      // geocode addresses that need it
       const coordsMap: Record<string, [number, number]> = loadGeocodeCache();
 
       await Promise.all(
@@ -180,7 +172,6 @@ export default function CommunityMap() {
         markerCoords.push(coord as [number, number]);
       });
 
-      // fit map to markers if any
       if (markerCoords.length > 0) {
         const bounds = L.latLngBounds(markerCoords as any);
         map.fitBounds((bounds as any).pad(0.1), { padding: [40, 40] });
@@ -195,7 +186,6 @@ export default function CommunityMap() {
     return () => {
       if (mapRef.current) {
         try {
-          // remove added layers
           const layers: L.Layer[] = (mapRef as any).layers || [];
           layers.forEach((ly) => {
             try {

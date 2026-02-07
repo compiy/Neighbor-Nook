@@ -21,7 +21,6 @@ export default function AnimatedBlobs() {
 
     const { count, colors, minSize, maxSize } = DEFAULTS;
 
-    // initialize random positions/sizes/colors
     blobsRef.current.forEach((b, i) => {
       if (!b) return;
       const size = gsap.utils.random(minSize, maxSize);
@@ -35,7 +34,6 @@ export default function AnimatedBlobs() {
       if (inner) inner.style.background = color;
     });
 
-    // create floating + morph animations per blob
     const timelines = blobsRef.current.map((b, i) => {
       if (!b) return null;
       const tl = gsap.timeline({ repeat: -1, yoyo: true });
@@ -66,7 +64,6 @@ export default function AnimatedBlobs() {
       return tl;
     });
 
-    // subtle group-level pulsing
     const groupPulse = gsap.to(el, {
       duration: 3,
       opacity: 1,

@@ -42,7 +42,6 @@ export default function DirectoryPage() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const isInitialMount = useRef(true);
 
-  // Load submitted resources from localStorage on mount and when storage changes
   useEffect(() => {
     let mounted = true;
 
@@ -93,17 +92,14 @@ export default function DirectoryPage() {
     };
   }, []);
 
-  // Load favorites from localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('nn_favorites');
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Get favorites from the "Saved" list specifically
         const savedFavorites = parsed.Saved || [];
         setFavorites(savedFavorites);
       }
-      // Mark initial mount as complete after loading
       isInitialMount.current = false;
     } catch (e) {
       console.error('Failed to load favorites:', e);
@@ -111,23 +107,17 @@ export default function DirectoryPage() {
     }
   }, []);
 
-  // Save favorites to localStorage only when they actually change (not on initial mount)
   useEffect(() => {
-    // Skip saving on initial mount to avoid overwriting existing data
     if (isInitialMount.current) return;
     
     try {
-      // Get existing favorites structure
       const existing = localStorage.getItem('nn_favorites');
       const existingFavs = existing ? JSON.parse(existing) : {};
       
-      // Create updated structure preserving all existing lists
       const updatedFavs = { ...existingFavs };
       
-      // Update the "Saved" list with current favorites
       updatedFavs.Saved = favorites;
       
-      // Remove empty lists
       Object.keys(updatedFavs).forEach(key => {
         if (updatedFavs[key].length === 0) delete updatedFavs[key];
       });
@@ -165,12 +155,12 @@ export default function DirectoryPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header moved to shared component */}
+      {}
 
-      {/* Resource Directory Section */}
+      {}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-50">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
+          {}
           <div className="text-center mb-12">
             <p className="text-sm uppercase tracking-wider text-zinc-500 mb-4">
               BUILT BY THE COMMUNITY, FOR THE COMMUNITY
@@ -180,9 +170,9 @@ export default function DirectoryPage() {
             </h2>
           </div>
 
-          {/* Search and Filter Section */}
+          {}
           <div className="mb-12 space-y-6">
-            {/* Search Bar */}
+            {}
             <div className="relative max-w-2xl mx-auto">
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-zinc-400 w-5 h-5" />
               <input
@@ -194,7 +184,7 @@ export default function DirectoryPage() {
               />
             </div>
 
-            {/* Filter Buttons */}
+            {}
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Filter className="w-5 h-5 text-zinc-600" />
               {categories.map((category) => (
@@ -212,7 +202,7 @@ export default function DirectoryPage() {
               ))}
             </div>
 
-            {/* Add Resource Button */}
+            {}
             <div className="flex justify-center">
               <Link
                 href="/submit"
@@ -223,13 +213,13 @@ export default function DirectoryPage() {
               </Link>
             </div>
 
-            {/* Results Count */}
+            {}
             <div className="text-center text-zinc-600">
               {filteredResources.length} resource{filteredResources.length !== 1 ? "s" : ""} found
             </div>
           </div>
 
-          {/* Resource Cards Grid */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResources.map((resource) => {
               const IconComponent = iconMap[resource.iconName] || ShoppingBag;

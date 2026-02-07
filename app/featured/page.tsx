@@ -5,12 +5,12 @@ import { ShoppingBag, HeartHandshake, GraduationCap, Phone, Mail, Globe, MapPin,
 export default function FeaturedPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Header moved to shared component */}
+      {}
 
-      {/* Featured Resources Section */}
+      {}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-50">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
+          {}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 mb-4">
               <Star className="w-6 h-6 text-red-400" />
@@ -26,9 +26,9 @@ export default function FeaturedPage() {
             </p>
           </div>
 
-          {/* Featured Resource Cards Grid */}
+          {}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Featured Resource 1 */}
+            {}
             <div className="bg-white rounded-xl p-6 border border-zinc-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <ShoppingBag className="w-10 h-10 text-black" />
@@ -65,7 +65,7 @@ export default function FeaturedPage() {
               </div>
             </div>
 
-            {/* Featured Resource 2 */}
+            {}
             <div className="bg-white rounded-xl p-6 border border-zinc-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <HeartHandshake className="w-10 h-10 text-black" />
@@ -102,7 +102,7 @@ export default function FeaturedPage() {
               </div>
             </div>
 
-            {/* Featured Resource 3 */}
+            {}
             <div className="bg-white rounded-xl p-6 border border-zinc-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <GraduationCap className="w-10 h-10 text-black" />

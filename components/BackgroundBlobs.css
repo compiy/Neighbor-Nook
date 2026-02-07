@@ -1,4 +1,3 @@
-/* Background floating blobs with goo/morph effect */
 .bg-blobs-container {
   position: absolute;
   inset: 0;
@@ -21,14 +20,12 @@
   mix-blend-mode: screen;
 }
 
-/* soft subtle blur and contrast */
 .bg-blob-inner {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
 
-/* fallback small-scale animation to ensure motion before JS attaches */
 @keyframes floatFallback {
   0% { transform: translate(-50%, -50%) scale(1); }
   50% { transform: translate(-48%, -52%) scale(1.02); }

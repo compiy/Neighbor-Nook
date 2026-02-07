@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // server-only
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY; 
 
 if (!supabaseUrl || !serviceKey) {
   console.error('Missing SUPABASE_SERVICE_ROLE_KEY or NEXT_PUBLIC_SUPABASE_URL for API route.');
@@ -40,7 +40,6 @@ export async function PATCH(request: Request) {
     const id = body?.id;
     if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
 
-    // fetch current downvotes
     const { data: existing, error: selectErr } = await supabase
       .from('resources')
       .select('downvotes')
@@ -54,7 +53,6 @@ export async function PATCH(request: Request) {
     const next = current + 1;
 
     if (next >= 5) {
-      // delete the resource
       const { error: delErr } = await supabase.from('resources').delete().eq('id', id);
       if (delErr) return NextResponse.json({ error: delErr.message }, { status: 500 });
       return NextResponse.json({ deleted: true }, { status: 200 });

@@ -61,7 +61,6 @@ function FavoritesView() {
     content += `Generated on ${new Date().toLocaleString()}\n`;
     content += "Note: These favorites are stored locally in your browser.\n";
     
-    // Create and download file
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -108,7 +107,6 @@ function FavoritesView() {
     
     reader.readAsText(file);
     
-    // Reset file input
     event.target.value = '';
   };
 
@@ -121,10 +119,8 @@ function FavoritesView() {
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       
-      // Skip empty lines and separators
       if (!line || line.startsWith('=') || line.startsWith('-')) continue;
       
-      // Detect list headers (e.g., "Saved (3 resources)")
       const listMatch = line.match(/^([^(]+)\s+\(\d+\s+resources\)$/);
       if (listMatch) {
         currentList = listMatch[1].trim();
@@ -134,11 +130,9 @@ function FavoritesView() {
         continue;
       }
       
-      // Detect resource entries (start with •)
       if (line.startsWith('•')) {
         const resourceName = line.substring(1).trim();
         
-        // Find this resource in our data
         const resource = allResources.find(r => 
           r.name.toLowerCase() === resourceName.toLowerCase()
         );
@@ -182,7 +176,6 @@ function FavoritesView() {
         </div>
       </div>
       
-      {/* Upload status message */}
       {uploadStatus && (
         <div className={`mb-4 p-3 rounded-lg border ${
           uploadStatus.includes('Successfully') 
@@ -193,7 +186,6 @@ function FavoritesView() {
         </div>
       )}
       
-      {/* Storage notice */}
       <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
         <div className="flex items-start gap-3">
           <Info className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />

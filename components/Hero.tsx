@@ -3,7 +3,6 @@ import { ArrowDown, Heart } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 via-orange-400 to-cyan-400 opacity-90"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-purple-600/50 via-transparent to-transparent"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-transparent via-transparent to-cyan-500/50"></div>

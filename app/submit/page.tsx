@@ -51,7 +51,6 @@ export default function SubmitPage() {
 
         setSubmitted(true);
 
-        // save locally for compatibility
         const newResource = {
           id: Date.now().toString(),
           name: formData.organizationName,
@@ -74,7 +73,6 @@ export default function SubmitPage() {
         setTimeout(() => router.push('/directory'), 1200);
       } catch (err) {
         console.error('Failed to submit resource via API:', err);
-        // fallback: save to localStorage
         const newResource = {
           id: Date.now().toString(),
           name: formData.organizationName,
@@ -112,12 +110,12 @@ export default function SubmitPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header moved to shared component */}
+      {}
 
-      {/* Submit Form Section */}
+      {}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-50">
         <div className="max-w-3xl mx-auto">
-          {/* Back Button */}
+          {}
           <Link
             href="/directory"
             className="inline-flex items-center gap-2 text-zinc-600 hover:text-black transition-colors mb-8"
@@ -126,7 +124,7 @@ export default function SubmitPage() {
             <span>Back to Directory</span>
           </Link>
 
-          {/* Header */}
+          {}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Add New Resource
@@ -136,12 +134,12 @@ export default function SubmitPage() {
             </p>
           </div>
 
-          {/* Form */}
+          {}
           <form
             onSubmit={handleSubmit}
             className="bg-white border border-zinc-200 rounded-2xl p-8 md:p-10 space-y-6 shadow-lg"
           >
-            {/* Organization Name */}
+            {}
             <div>
               <label
                 htmlFor="organizationName"
@@ -161,7 +159,7 @@ export default function SubmitPage() {
               />
             </div>
 
-            {/* Category */}
+            {}
             <div>
               <label
                 htmlFor="category"
@@ -188,7 +186,7 @@ export default function SubmitPage() {
               </select>
             </div>
 
-            {/* Description */}
+            {}
             <div>
               <label
                 htmlFor="description"
@@ -208,12 +206,12 @@ export default function SubmitPage() {
               />
             </div>
 
-            {/* Contact Information Section */}
+            {}
             <div className="border-t border-zinc-200 pt-6">
               <h3 className="text-lg font-semibold text-black mb-4">Contact Information</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Phone */}
+                {}
                 <div>
                   <label
                     htmlFor="phone"
@@ -233,7 +231,7 @@ export default function SubmitPage() {
                   />
                 </div>
 
-                {/* Email */}
+                {}
                 <div>
                   <label
                     htmlFor="email"
@@ -254,7 +252,7 @@ export default function SubmitPage() {
                 </div>
               </div>
 
-              {/* Website */}
+              {}
               <div className="mt-6">
                 <label
                   htmlFor="website"
@@ -274,11 +272,11 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            {/* Location Information Section */}
+            {}
             <div className="border-t border-zinc-200 pt-6">
               <h3 className="text-lg font-semibold text-black mb-4">Location Information</h3>
               
-              {/* Address */}
+              {}
               <div className="mb-6">
                 <label
                   htmlFor="address"
@@ -298,7 +296,7 @@ export default function SubmitPage() {
                 />
               </div>
 
-              {/* Hours */}
+              {}
               <div>
                 <label
                   htmlFor="hours"
@@ -319,7 +317,7 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            {/* Your Contact Information Section */}
+            {}
             <div className="border-t border-zinc-200 pt-6">
               <h3 className="text-lg font-semibold text-black mb-4">Your Contact Information</h3>
               <p className="text-sm text-zinc-600 mb-4">
@@ -369,7 +367,7 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {}
             <div className="pt-6">
               <button
                 type="submit"

@@ -19,7 +19,6 @@ export default function ResourceForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     (async () => {
-      // insert into Supabase `resources` table
       const payload = {
         name: formData.name,
         category: formData.category,
